@@ -1,20 +1,21 @@
-# Vuetify Webpack SSR Template
+# patronus-front
 
-> Vuetify SSR Webpack Template
+> A Vue.js project
 
 ## Build Setup
 
 ``` bash
-vue init vuetifyjs/webpack-ssr
-
-cd webpack-ssr
-
-# npm
+# install dependencies
 npm install
 
-# yarn
-yarn
+# serve with hot reload at localhost:8080
+npm run dev
+
+# build for production with minification
+npm run build
+
+# build for production and view the bundle analyzer report
+npm run build --report
 ```
 
-For additional information, please visit the [Official Documentation](https://vuetifyjs.com).
-# Patronus-Front
+For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
