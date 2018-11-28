@@ -10,6 +10,10 @@ import colors from 'vuetify/es5/util/colors'
 
 import VueConfetti from 'vue-confetti'
 
+import {
+  store
+} from './store'
+
 Vue.use(Vuetify, {
   theme: {
     primary: colors.cyan.lighten1, // #E53935
@@ -25,6 +29,7 @@ Vue.config.productionTip = false
 new Vue({
   el: '#app',
   router,
+  store,
   components: {
     App
   },

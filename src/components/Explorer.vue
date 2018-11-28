@@ -9,9 +9,9 @@
           xs12
           md6
           lg6
-          v-for="n in 12"
-          :key="n"
-          class="ok"
+          v-for="item in items"
+          :key="item.project_id"
+          class="card_association"
         >
           <v-card>
             <v-img
@@ -29,7 +29,7 @@
                     align-end
                     flexbox
                   >
-                    <v-btn color="secondary">Netoun association</v-btn>
+                    <v-btn color="secondary">{{item.name}}</v-btn>
                   </v-flex>
                 </v-layout>
               </v-container>
@@ -37,7 +37,7 @@
             <v-card-title>
               <div>
                 <span class="grey--text">Description :</span><br>
-                <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque dicta expedita amet modi unde? Ullam perferendis pariatur repellat quia, aspernatur voluptatibus libero rerum, molestiae laborum iure nostrum sint in velit!</span><br>
+                <span>{{item.description}}</span><br>
               </div>
             </v-card-title>
             <v-card-actions>
@@ -46,7 +46,7 @@
                 color="primary"
               >More</v-btn>
               <v-btn
-                @click="start"
+                @click="vote"
                 color="primary"
               >Vote</v-btn>
             </v-card-actions>
@@ -59,20 +59,36 @@
 
 <script>
 export default {
+  data () {
+    return {
+      items: [
+
+      ]
+    }
+  },
   methods: {
-    start () {
+    vote () {
       this.$confetti.start()
       setTimeout(() => {
         this.$confetti.stop()
-      }, 1000)
+      }, 2000)
     }
+  },
+  created () {
+    fetch('http://localhost:8000/projects')
+      .then(response => {
+        return response.json()
+      }).then(projects => {
+        console.log(projects)
+        this.items = projects
+      })
   }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.ok {
+.card_association {
 padding: 20px;
 }
 </style>
