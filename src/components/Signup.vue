@@ -88,7 +88,7 @@ export default {
 
   }),
   created () {
-    fetch('http://localhost:8000/users/count')
+    fetch(process.env.PATRONUS_API + '/users/count')
       .then(response => {
         return response.text()
       }).then(count => {

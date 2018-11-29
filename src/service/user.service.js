@@ -7,7 +7,7 @@ export const userService = {
   getVote
 }
 
-function login(email, password) {
+function login (email, password) {
   const requestOptions = {
     method: 'POST',
     headers: {
@@ -19,7 +19,7 @@ function login(email, password) {
     })
   }
 
-  return fetch('http://localhost:8000/login', requestOptions).then(handleResponse)
+  return fetch(process.env.PATRONUS_API + '/login', requestOptions).then(handleResponse)
     .then(user => {
       console.log(user.token.sub())
       localStorage.setItem('user', JSON.stringify(user.token))
@@ -27,11 +27,11 @@ function login(email, password) {
     })
 }
 
-function logout() {
+function logout () {
   localStorage.removeItem('user')
 }
 
-function register(user) {
+function register (user) {
   const requestOptions = {
     method: 'POST',
     headers: {
@@ -39,10 +39,10 @@ function register(user) {
     },
     body: JSON.stringify(user)
   }
-  return fetch('http://localhost:8000/user', requestOptions).then(handleResponse)
+  return fetch(process.env.PATRONUS_API + '/user', requestOptions).then(handleResponse)
 }
 
-function sendVote(user_id, project_id) {
+function sendVote (user_id, project_id) {
   const requestOptions = {
     method: 'POST',
     headers: {
@@ -54,10 +54,10 @@ function sendVote(user_id, project_id) {
     })
   }
   console.log(requestOptions)
-  return fetch('http://localhost:8000/voter', requestOptions).then(handleResponse)
+  return fetch(process.env.PATRONUS_API + '/voter', requestOptions).then(handleResponse)
 }
 
-function getVote(token) {
+function getVote (token) {
   const requestOptions = {
     method: 'GET',
     headers: {
@@ -66,10 +66,10 @@ function getVote(token) {
       'Access-Control-Allow-Origin': '*'
     }
   }
-  return fetch('http://localhost:8000/support', requestOptions).then(handleResponse)
+  return fetch(process.env.PATRONUS_API + '/support', requestOptions).then(handleResponse)
 }
 
-function getByToken(token) {
+function getByToken (token) {
   const requestOptions = {
     method: 'GET',
     headers: {
@@ -79,7 +79,7 @@ function getByToken(token) {
     }
   }
 
-  return fetch('http://localhost:8000/user/profile', requestOptions).then(handleResponse)
+  return fetch(process.env.PATRONUS_API + '/user/profile', requestOptions).then(handleResponse)
 }
 
 // function update (user) {

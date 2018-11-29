@@ -144,7 +144,7 @@ export default {
     })
   },
   created () {
-    fetch('http://localhost:8000/projects')
+    fetch(process.env.PATRONUS_API + '/projects')
       .then(response => {
         return response.json()
       }).then(projects => {
