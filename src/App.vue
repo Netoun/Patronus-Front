@@ -27,7 +27,6 @@
           to="login"
           flat
         >
-          <v-icon>fas fa-user-secret</v-icon>
           <v-card-text>Login</v-card-text>
         </v-btn>
       </v-toolbar-items>

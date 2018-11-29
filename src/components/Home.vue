@@ -1,5 +1,5 @@
 <template>
-  <v-content>
+  <div>
     <section>
       <v-parallax
         class="parallax"
@@ -12,7 +12,7 @@
           justify-center
           class="white--text"
         >
-          <div class="home-title">« Rejoignez nous maintenant et soutenez les »</div>
+          <div class="home-title">Rejoignez nous maintenant et soutenez les !</div>
           <div>
             <v-btn
               depressed
@@ -38,8 +38,7 @@
           class="my-3"
         >
           <div class="text-xs-center">
-            <h2 class="headline">« Vos spécialistes de la formation en GMS depuis 2004 »</h2>
-
+            <h2 class="headline">« On ne peut pas, sous prétexte qu’il est impossible de tout faire en un jour, ne rien faire du tout »</h2>
           </div>
         </v-flex>
         <v-flex xs12>
@@ -57,7 +56,7 @@
                     <v-icon
                       x-large
                       class="primary--text"
-                    >fas fa-graduation-cap</v-icon>
+                    >fas fa-money-bill-alt </v-icon>
                   </v-card-text>
                   <v-card-title
                     primary-title
@@ -79,7 +78,7 @@
                     <v-icon
                       x-large
                       class="primary--text"
-                    >fas fa-life-ring</v-icon>
+                    >fas fa-handshake </v-icon>
                   </v-card-text>
                   <v-card-title
                     primary-title
@@ -101,7 +100,7 @@
                     <v-icon
                       x-large
                       class="primary--text"
-                    >fas fa-tasks</v-icon>
+                    >fas fa-award </v-icon>
                   </v-card-text>
                   <v-card-title
                     primary-title
@@ -130,6 +129,27 @@
           align-center
           justify-center
         >
+
+          <v-flex
+            xs12
+            sm2
+          >
+            <v-btn
+              flat
+              small
+              class="button_values white--text"
+            >{{count + " € "}}</v-btn>
+          </v-flex>
+
+          <div>
+            <v-btn
+              depressed
+              large
+              color="
+              secondary"
+              to="/explorer"
+            >Explorer</v-btn>
+          </div>
 
         </v-layout>
       </v-parallax>
@@ -398,7 +418,7 @@
       </v-container>
 
     </section>
-  </v-content>
+  </div>
 </template>
 
 <script>
@@ -406,19 +426,36 @@
 export default {
   data () {
     return {
-
+      count: 0
     }
   },
   methods: {
 
+  },
+  created () {
+    fetch(process.env.PATRONUS_API + '/users/totalsubs')
+      .then(response => {
+        return response.json()
+      }).then(count => {
+        this.count = count.values
+      })
+    this.logout()
   }
 }
 </script>
 
 
 <style scoped>
+.button_values {
+  font-size: 1.2em;
+  height: 30px;
+  background: rgba(0, 0, 0, 0.13)
+}
 .justify {
   text-align: justify;
+}
+.parallax {
+  padding: 0;
 }
 @media only screen and (max-width: 1500px) {
   .parallax img {
