@@ -84,6 +84,7 @@ export default {
       })
 
     this.logout()
+    console.log(this.account)
   },
   computed: {
     ...mapState('account', ['status', 'usersCount'])

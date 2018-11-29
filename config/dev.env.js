@@ -4,5 +4,5 @@ const prodEnv = require('./prod.env')
 
 module.exports = merge(prodEnv, {
   NODE_ENV: '"development"',
-  PATRONUS_API: '"http://localhost:8000"',
+  PATRONUS_API: '"http://api.patronus.fr"',
 })

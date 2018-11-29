@@ -15,7 +15,7 @@
         >
 
           <v-card>
-            <div v-if="account.vote.project_id == item.project_id">
+            <div v-if="item.project_id == account.vote.project_id">
 
               <v-icon
                 large

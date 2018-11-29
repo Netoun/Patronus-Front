@@ -89,9 +89,13 @@ const actions = {
     userService.getByToken(tokenUser).then(user => {
       commit('profile', user)
     })
+
     userService.getVote(tokenUser).then(vote => {
-      console.log(vote)
-      commit('voter', vote)
+      if (!vote) {
+        commit('voter', vote)
+      }
+    }, err => {
+      commit('voter', {})
     })
   },
   voter ({
@@ -130,7 +134,6 @@ const mutations = {
     state.tokenUser = null
   },
   logout (state) {
-    console.log('ahahaha')
     state.status = {
       user: {},
       vote: {}

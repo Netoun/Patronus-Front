@@ -131,12 +131,12 @@
         >
 
           <v-flex
-            xs12
+            xs10
             sm2
           >
             <v-btn
               flat
-              small
+              large
               class="button_values white--text"
             >{{count + " € "}}</v-btn>
           </v-flex>
@@ -448,7 +448,7 @@ export default {
 <style scoped>
 .button_values {
   font-size: 1.2em;
-  height: 30px;
+
   background: rgba(0, 0, 0, 0.13)
 }
 .justify {
