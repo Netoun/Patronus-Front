@@ -12,3 +12,5 @@ RUN \
 FROM nginx:alpine
 
 COPY --from=builder /usr/src/app/dist /usr/share/nginx/html
+
+COPY docker/nginx/conf.d /etc/nginx/conf.d
