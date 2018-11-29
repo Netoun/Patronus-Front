@@ -8,7 +8,7 @@
         <v-flex
           xs12
           md6
-          lg6
+          lg4
           v-for="item in items"
           :key="item.project_id"
           class="card_association"
@@ -47,7 +47,7 @@
             <v-card-title>
               <div class="description_text">
                 <span class="grey--text">Description :</span><br>
-                <span>{{item.description}}</span><br>
+                <span>{{item.description | readMore(150, ' ...')}}</span><br>
               </div>
             </v-card-title>
             <v-card-actions>
@@ -90,16 +90,16 @@
               <v-spacer></v-spacer>
               <v-chip
                 class="text-lg-right"
-                color="primary"
+                color="white"
                 align-right
-                text-color="white"
+                text-color="blue-grey darken-1"
               >
 
                 <v-avatar
-                  color="white"
-                  class="primary--text"
+                  color="secondary"
+                  class="white--text"
                 >{{item.count}}</v-avatar>
-                Vote
+                Votes
               </v-chip>
             </v-card-actions>
 
@@ -142,6 +142,11 @@ export default {
     ...mapState({
       account: state => state.account
     })
+  },
+  filters: {
+    readMore: function (text, length, suffix) {
+      return text.substring(0, length) + suffix
+    }
   },
   created () {
     fetch(process.env.PATRONUS_API + '/projects')

@@ -1,11 +1,13 @@
 <template>
   <v-app>
     <v-toolbar app>
-      <v-toolbar-title class="title_toolbar primary--text">Patr<span>o</span>nus</v-toolbar-title>
+      <v-toolbar-title class="title_toolbar primary--text">
+        <router-link to="/">Patr<span>o</span>nus</router-link>
+      </v-toolbar-title>
       <v-btn
         color="grey"
         flat
-        to="/"
+        to="/explorer"
       >Explorer</v-btn>
 
       <v-btn
@@ -131,7 +133,6 @@
 <script>
 import Countdown from 'vuejs-countdown'
 import { mapState, mapActions } from 'vuex'
-
 export default {
   components: { Countdown },
   data () {
@@ -144,6 +145,8 @@ export default {
     }
   },
   created () {
+    console.log(process.env.PATRONUS_API)
+    console.log(this.account.status.loggedIn)
     this.getProfile()
   },
   computed: {
@@ -163,16 +166,21 @@ export default {
 
 .title_toolbar {
   position: absolute;
-left: 50%;
+  left: 50%;
+  top: -21px;
 -webkit-transform: translateX(-50%);
 transform: translateX(-50%);
   font-family: 'Amatic SC', cursive;
   color: var(--v-primary-base);
-  font-size: 3em;
+  font-size: 3.5em;
 }
 .title_toolbar span {
   margin-top: 10px !important;
   font-size: 1.3em;
+}
+
+.title_toolbar a {
+ text-decoration:none; 
 }
 
 .countdown {

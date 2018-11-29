@@ -35,9 +35,9 @@ const actions = {
             commit('profile', ok)
             userService.getVote(key.token).then(vote => {
               commit('voter', vote)
-              router.push('/')
+              router.push('/explorer')
             }, err => {
-              router.push('/')
+              router.push('/explorer')
             })
           })
         },
@@ -103,7 +103,7 @@ const actions = {
   }) {
     userService.sendVote(userId, projectId).then(vote => {
       setTimeout(() => {
-        router.go('/')
+        router.go('/explorer')
       }, 2000)
     })
   }

@@ -4,12 +4,18 @@ import Explorer from '@/components/Explorer'
 import Classement from '@/components/Classement'
 import Login from '@/components/Login'
 import Signup from '@/components/Signup'
+import Home from '@/components/Home'
 Vue.use(Router)
 
 export default new Router({
   mode: 'history',
   routes: [{
     path: '/',
+    name: 'Home',
+    component: Home
+  },
+  {
+    path: '/explorer',
     name: 'Explorer',
     component: Explorer
   },
