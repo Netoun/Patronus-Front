@@ -9,7 +9,8 @@ const state = tokenUser ? {
     loggedIn: true
   },
   tokenUser,
-  user: null
+  user: {},
+  vote: {}
 } : {
   status: {},
   tokenUser: null
@@ -28,10 +29,17 @@ const actions = {
     })
     userService.login(email, password)
       .then(
-        user => {
-          commit('loginSuccess', user)
-
-          router.push('/')
+        key => {
+          commit('loginSuccess', key)
+          userService.getByToken(key.token).then(ok => {
+            commit('profile', ok)
+            userService.getVote(key.token).then(vote => {
+              commit('voter', vote)
+              router.push('/')
+            }, err => {
+              router.push('/')
+            })
+          })
         },
         error => {
           console.log(error)
@@ -58,6 +66,7 @@ const actions = {
       .then(
         user => {
           commit('registerSuccess', user)
+
           router.push('/login')
           setTimeout(() => {
             // display success message after route change completes
@@ -77,16 +86,25 @@ const actions = {
   getProfile ({
     commit
   }) {
-    console.log(tokenUser)
     userService.getByToken(tokenUser).then(user => {
       commit('profile', user)
     })
+    userService.getVote(tokenUser).then(vote => {
+      console.log(vote)
+      commit('voter', vote)
+    })
   },
   voter ({
+    dispatch,
     commit
-  }, userId, projectId) {
+  }, {
+    userId,
+    projectId
+  }) {
     userService.sendVote(userId, projectId).then(vote => {
-
+      setTimeout(() => {
+        router.go('/')
+      }, 2000)
     })
   }
 }
@@ -98,18 +116,25 @@ const mutations = {
     }
     state.tokenUser = tokenUser
   },
-  loginSuccess (state, user) {
+  loginSuccess (state, tokenUser) {
     state.status = {
       loggedIn: true
     }
     state.tokenUser = tokenUser
   },
   loginFailure (state) {
-    state.status = {}
+    state.status = {
+      user: {},
+      vote: {}
+    }
     state.tokenUser = null
   },
   logout (state) {
-    state.status = {}
+    console.log('ahahaha')
+    state.status = {
+      user: {},
+      vote: {}
+    }
     state.tokenUser = null
   },
   registerRequest (state, user) {
@@ -125,6 +150,9 @@ const mutations = {
   },
   profile (state, user) {
     state.user = user
+  },
+  voter (state, vote) {
+    state.vote = vote
   }
 }
 

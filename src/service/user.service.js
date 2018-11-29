@@ -3,10 +3,11 @@ export const userService = {
   logout,
   register,
   getByToken,
-  sendVote
+  sendVote,
+  getVote
 }
 
-function login (email, password) {
+function login(email, password) {
   const requestOptions = {
     method: 'POST',
     headers: {
@@ -26,11 +27,11 @@ function login (email, password) {
     })
 }
 
-function logout () {
+function logout() {
   localStorage.removeItem('user')
 }
 
-function register (user) {
+function register(user) {
   const requestOptions = {
     method: 'POST',
     headers: {
@@ -41,18 +42,34 @@ function register (user) {
   return fetch('http://localhost:8000/user', requestOptions).then(handleResponse)
 }
 
-function sendVote (vote) {
+function sendVote(user_id, project_id) {
   const requestOptions = {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify(vote)
+    body: JSON.stringify({
+      user_id,
+      project_id
+    })
   }
+  console.log(requestOptions)
   return fetch('http://localhost:8000/voter', requestOptions).then(handleResponse)
 }
 
-function getByToken (token) {
+function getVote(token) {
+  const requestOptions = {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      'authentication': token,
+      'Access-Control-Allow-Origin': '*'
+    }
+  }
+  return fetch('http://localhost:8000/support', requestOptions).then(handleResponse)
+}
+
+function getByToken(token) {
   const requestOptions = {
     method: 'GET',
     headers: {
@@ -95,7 +112,7 @@ const handleResponse = (response) => {
         location.reload(true)
       }
 
-      const error = (data && data.message) || response.statusText
+      const error = response.statusText
       return Promise.reject(error)
     }
 

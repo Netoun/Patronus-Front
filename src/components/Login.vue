@@ -82,6 +82,7 @@ export default {
       }).then(count => {
         this.countusers = count
       })
+
     this.logout()
   },
   computed: {

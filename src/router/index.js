@@ -7,6 +7,7 @@ import Signup from '@/components/Signup'
 Vue.use(Router)
 
 export default new Router({
+  mode: 'history',
   routes: [{
     path: '/',
     name: 'Explorer',
@@ -26,6 +27,10 @@ export default new Router({
     path: '/signin',
     name: 'Signup',
     component: Signup
+  },
+  {
+    path: '*',
+    redirect: '/'
   }
   ]
 })
