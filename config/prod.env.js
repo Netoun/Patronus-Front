@@ -1,5 +1,5 @@
 'use strict'
 module.exports = {
   NODE_ENV: '"production"',
-  PATRONUS_API: '"http://localhost:8000"'
+  PATRONUS_API: '"http://api.patronus.fr"'
 }
