@@ -56,7 +56,6 @@
                 color="primary"
               >More</v-btn>
               <v-btn
-                :disabled="account.vote.user_id"
                 @click="vote(item.project_id)"
                 color="primary"
               >Vote</v-btn>
@@ -87,6 +86,32 @@
                   </v-card-actions>
                 </v-card>
               </v-dialog>
+              <v-dialog
+                v-if="dialog_update"
+                v-model="dialog"
+                max-width="290"
+              >
+                <v-card>
+                  <v-card-title primary-title>
+                    Are you sur to change your vote ?
+                  </v-card-title>
+                  <v-card-actions>
+                    <v-btn
+                      color="primary"
+                      @click="vote(item.project_id)"
+                    >Ready
+                    </v-btn>
+                    <v-btn
+                      color="
+                      primary"
+                      flat
+                      @click="dialog = false"
+                    >
+                      Close
+                    </v-btn>
+                  </v-card-actions>
+                </v-card>
+              </v-dialog>
               <v-spacer></v-spacer>
               <v-chip
                 class="text-lg-right"
@@ -94,7 +119,6 @@
                 align-right
                 text-color="blue-grey darken-1"
               >
-
                 <v-avatar
                   color="secondary"
                   class="white--text"
@@ -102,7 +126,6 @@
                 Votes
               </v-chip>
             </v-card-actions>
-
           </v-card>
         </v-flex>
       </v-layout>
@@ -118,6 +141,7 @@ export default {
   data () {
     return {
       dialog: false,
+      dialog_update: false,
       items: [
 
       ]
@@ -131,7 +155,8 @@ export default {
           this.$confetti.stop()
         }, 2000)
         const userId = this.account.user.uuid
-        this.voter({ userId, projectId })
+        const stateVote = this.account.vote
+        this.voter({ userId, projectId, stateVote })
       } else {
         this.dialog = true
       }

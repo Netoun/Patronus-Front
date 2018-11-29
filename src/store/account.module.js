@@ -17,7 +17,7 @@ const state = tokenUser ? {
 }
 
 const actions = {
-  login ({
+  login({
     dispatch,
     commit
   }, {
@@ -42,7 +42,6 @@ const actions = {
           })
         },
         error => {
-          console.log(error)
           commit('loginFailure', error)
           dispatch('alert/error', error, {
             root: true
@@ -50,13 +49,13 @@ const actions = {
         }
       )
   },
-  logout ({
+  logout({
     commit
   }) {
     userService.logout()
     commit('logout')
   },
-  register ({
+  register({
     dispatch,
     commit
   }, tokenUser) {
@@ -83,7 +82,7 @@ const actions = {
         }
       )
   },
-  getProfile ({
+  getProfile({
     commit
   }) {
     userService.getByToken(tokenUser).then(user => {
@@ -91,70 +90,88 @@ const actions = {
     })
 
     userService.getVote(tokenUser).then(vote => {
-      if (!vote) {
-        commit('voter', vote)
-      }
+      commit('voter', vote)
     }, err => {
+
       commit('voter', {})
     })
   },
-  voter ({
+  voter({
     dispatch,
     commit
   }, {
     userId,
-    projectId
+    projectId,
+    stateVote
   }) {
-    userService.sendVote(userId, projectId).then(vote => {
-      setTimeout(() => {
-        router.go('/explorer')
-      }, 2000)
-    })
+    if (!stateVote.user_id) {
+      userService.sendVote(userId, projectId).then(vote => {
+        setTimeout(() => {
+          userService.getVote(tokenUser).then(vote => {
+            commit('voter', vote)
+          }, err => {
+            commit('voter', {})
+          })
+          router.go('/explorer')
+        }, 2000)
+      })
+    } else {
+      userService.updateVote(userId, projectId, stateVote).then(vote => {
+        setTimeout(() => {
+          userService.getVote(tokenUser).then(vote => {
+            commit('voter', vote)
+          }, err => {
+            commit('voter', {})
+          })
+          router.go('/explorer')
+        }, 2000)
+      })
+    }
   }
 }
 
 const mutations = {
-  loginRequest (state, tokenUser) {
+  loginRequest(state, tokenUser) {
     state.status = {
       loggingIn: true
     }
     state.tokenUser = tokenUser
   },
-  loginSuccess (state, tokenUser) {
+  loginSuccess(state, tokenUser) {
     state.status = {
       loggedIn: true
     }
     state.tokenUser = tokenUser
   },
-  loginFailure (state) {
+  loginFailure(state) {
     state.status = {
       user: {},
       vote: {}
     }
     state.tokenUser = null
   },
-  logout (state) {
+  logout(state) {
     state.status = {
       user: {},
       vote: {}
     }
     state.tokenUser = null
   },
-  registerRequest (state, user) {
+  registerRequest(state, user) {
     state.status = {
       registering: true
     }
   },
-  registerSuccess (state, user) {
+  registerSuccess(state, user) {
     state.status = {}
   },
-  registerFailure (state, error) {
+  registerFailure(state, error) {
     state.status = {}
   },
-  profile (state, user) {
+  profile(state, user) {
     state.user = user
   },
-  voter (state, vote) {
+  voter(state, vote) {
     state.vote = vote
   }
 }

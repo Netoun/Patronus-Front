@@ -32,10 +32,7 @@
             label="Password"
             required
           ></v-text-field>
-          <v-btn
-            :disabled="!valid"
-            @click="handleSubmit"
-          >
+          <v-btn @click="handleSubmit">
             submit
           </v-btn>
           <v-btn
@@ -62,7 +59,6 @@ import { mapState, mapActions } from 'vuex'
 export default {
   data: () => ({
     alert: false,
-    valid: false,
     submitted: false,
     countusers: 0,
     email: '',

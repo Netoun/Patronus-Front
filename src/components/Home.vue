@@ -12,7 +12,7 @@
           justify-center
           class="white--text"
         >
-          <div class="home-title">Rejoignez nous maintenant et soutenez les !</div>
+          <div class="home-title">Rejoignez-nous maintenant et soutener votre association</div>
           <div>
             <v-btn
               depressed
@@ -62,10 +62,10 @@
                     primary-title
                     class="layout justify-center"
                   >
-                    <div class="headline text-xs-center">La formation continue</div>
+                    <div class="headline text-xs-center">Paiment</div>
                   </v-card-title>
                   <v-card-text class="justify">
-                    Acquérir les compétences nécessaires à l'épanouissement professionnel. Améliorer significativement les résultats. Optimiser l’organisation et la production des hommes et du matériel
+                    Souscrivez un abonnement avec paiment sécurisé de la somme de votre choix et permettez a votre association de votre choix de pouvoir obtenir la première place
                   </v-card-text>
                 </v-card>
               </v-flex>
@@ -84,10 +84,10 @@
                     primary-title
                     class="layout justify-center"
                   >
-                    <div class="headline">L'assistance</div>
+                    <div class="headline">Engagement</div>
                   </v-card-title>
                   <v-card-text class="justify">
-                    Apporter une prestation dans les cadres suivants : Absence pour maladie, congés ou accident. Surcroît de travail ponctuel ou saisonnier.
+                    Collaborer a votre manière avec les association, découvrer de nouvelles organisation a travers leur page et construiser un pont vers l'engagement humanitaire
                   </v-card-text>
                 </v-card>
               </v-flex>
@@ -106,10 +106,10 @@
                     primary-title
                     class="layout justify-center"
                   >
-                    <div class="headline text-xs-center"> Le suivi de rayon</div>
+                    <div class="headline text-xs-center">Classement</div>
                   </v-card-title>
                   <v-card-text class="justify">
-                    Suivre le rayon afin d’assurer le respect des procédures et conforter durablement les résultats obtenus.
+                    Chaque association participant obtiendra une partie de la cagnotte en fonction de leur place a chaque fin de mois
                   </v-card-text>
                 </v-card>
               </v-flex>
@@ -138,7 +138,7 @@
               flat
               large
               class="button_values white--text"
-            >{{count + " € "}}</v-btn>
+            >{{"Cagnotte : " + count + " € "}}</v-btn>
           </v-flex>
 
           <div>
@@ -154,105 +154,6 @@
         </v-layout>
       </v-parallax>
     </section>
-
-    <section id="propos">
-      <v-layout
-        column
-        wrap
-        class="my-5"
-        align-center
-      >
-        <v-flex
-          xs12
-          sm4
-          class="my-3"
-        >
-          <div class="text-xs-center">
-            <h2 class="headline">"Si nous faisions tout ce dont nous sommes capables, nous nous surprendrions vraiment"</h2>
-            <span class="grey--text">
-              Thomas Edison
-            </span>
-          </div>
-        </v-flex>
-        <v-flex xs12>
-          <v-container grid-list-xl>
-            <v-layout
-              row
-              wrap
-            >
-              <v-flex
-                xs12
-                md4
-              >
-                <v-card class="elevation-0 transparent">
-                  <v-card-text class="text-xs-center">
-                    <v-icon
-                      x-large
-                      class="primary--text"
-                    >fas fa-users</v-icon>
-                  </v-card-text>
-                  <v-card-title
-                    primary-title
-                    class="layout justify-center"
-                  >
-                    <div class="headline">Un réseau national</div>
-                  </v-card-title>
-                  <v-card-text class="justify">
-                    Formafrais est un réseau de formateurs indépendants exerçant depuis 10 ans en métropole et dans les DOM TOM. Nous vous proposons une grande réactivité et des formations à la carte avec la proximité attendue par vos équipes. Un suivi téléphonique entre chaque formation vous sera proposé
-                  </v-card-text>
-                </v-card>
-              </v-flex>
-              <v-flex
-                xs12
-                md4
-              >
-                <v-card class="elevation-0 transparent">
-                  <v-card-text class="text-xs-center">
-                    <v-icon
-                      x-large
-                      class="primary--text"
-                    >fas fa-user-tie</v-icon>
-                  </v-card-text>
-                  <v-card-title
-                    primary-title
-                    class="layout justify-center"
-                  >
-                    <div class="headline">Un professionnel attitré</div>
-                  </v-card-title>
-                  <v-card-text class="justify">
-                    Vos consultants Formafrais sont des indépendants qualifiés ayant déjà une expérience de plus de quinze ans en grande distribution. Ils sont tous experts et reconnus dans leur métier
-                  </v-card-text>
-                </v-card>
-              </v-flex>
-              <v-flex
-                xs12
-                md4
-              >
-                <v-card class="elevation-0 transparent">
-                  <v-card-text class="text-xs-center">
-                    <v-icon
-                      x-large
-                      class="primary--text"
-                    >fas fa-ruler</v-icon>
-                  </v-card-text>
-                  <v-card-title
-                    primary-title
-                    class="layout justify-center"
-                  >
-                    <div class="headline">Une formation sur mesure</div>
-                  </v-card-title>
-                  <v-card-text class="justify">
-                    Chaque formation proposée par Formafrais est unique. Elle est créée en fonction de votre demande et évoluera en fonction des besoins de votre équipe, vos consultants travaillent avec passion pour et avec vos collaborateurs afin de les guider aussi loin que possible
-                  </v-card-text>
-                </v-card>
-                </v-card>
-              </v-flex>
-            </v-layout>
-          </v-container>
-        </v-flex>
-      </v-layout>
-    </section>
-
     <section id="contact">
       <v-container grid-list-xl>
         <v-layout
@@ -274,7 +175,7 @@
                 <div class="headline">Contact </div>
               </v-card-title>
               <v-card-text>
-                <h3>Dominique Bertrand</h3>
+                <h3>Sun7 Patronus</h3>
               </v-card-text>
               <v-list class="transparent">
                 <v-list-tile>
@@ -282,7 +183,7 @@
                     <v-icon class="primary--text">phone</v-icon>
                   </v-list-tile-action>
                   <v-list-tile-content>
-                    <v-list-tile-title>06.83.93.65.97</v-list-tile-title>
+                    <v-list-tile-title>06.45.73.91.48</v-list-tile-title>
                   </v-list-tile-content>
                 </v-list-tile>
                 <v-list-tile>
@@ -290,7 +191,7 @@
                     <v-icon class="primary--text">place</v-icon>
                   </v-list-tile-action>
                   <v-list-tile-content>
-                    <v-list-tile-title>Guérande, FR</v-list-tile-title>
+                    <v-list-tile-title>Nantes, FR</v-list-tile-title>
                   </v-list-tile-content>
                 </v-list-tile>
                 <v-list-tile>
@@ -298,7 +199,7 @@
                     <v-icon class="primary--text">email</v-icon>
                   </v-list-tile-action>
                   <v-list-tile-content>
-                    <v-list-tile-title>formafrais@gmail.com</v-list-tile-title>
+                    <v-list-tile-title>contact@patronus.fr</v-list-tile-title>
                   </v-list-tile-content>
                 </v-list-tile>
               </v-list>
@@ -317,9 +218,9 @@
                   <v-list-tile-content>
                     <v-list-tile-title>
                       <a
-                        v-bind:href="reglement"
+                        href=""
                         download
-                      > Réglement intérieur</a>
+                      > Protection des données</a>
                     </v-list-tile-title>
                   </v-list-tile-content>
                 </v-list-tile>
@@ -329,9 +230,9 @@
                   </v-list-tile-action>
                   <v-list-tile-content>
                     <a
-                      v-bind:href="cgv"
+                      href="cgv"
                       download
-                    > Conditions générales de vente</a>
+                    > Informations supplémentaires</a>
                   </v-list-tile-content>
                 </v-list-tile>
               </v-list>
@@ -400,7 +301,6 @@
               </v-form>
             </v-card>
             <v-btn
-              v-scroll-to="'#toolbar'"
               class="button"
               color="primary"
               dark
@@ -426,11 +326,29 @@
 export default {
   data () {
     return {
+      name: '',
+      nameRules: [
+        (v) => !!v || 'Name is required'
+      ],
+      email: '',
+      emailRules: [
+        (v) => !!v || 'E-mail is required',
+        (v) => /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(v) || 'E-mail must be valid'
+      ],
+      firstname: '',
+      societe: '',
+      textarea: '',
+      textRules: [
+        (v) => !!v || 'Message is required'
+      ],
       count: 0
     }
   },
   methods: {
-
+    submit () {
+      // eslint-disable-next-line
+      nativeForm.submit()
+    }
   },
   created () {
     fetch(process.env.PATRONUS_API + '/users/totalsubs')
@@ -439,7 +357,6 @@ export default {
       }).then(count => {
         this.count = count.values
       })
-    this.logout()
   }
 }
 </script>
@@ -447,8 +364,8 @@ export default {
 
 <style scoped>
 .button_values {
-  font-size: 1.2em;
-
+  font-size: 1.5em;
+  text-shadow: 4px 4px 12px rgb(12, 12, 12);
   background: rgba(0, 0, 0, 0.13)
 }
 .justify {

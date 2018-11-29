@@ -13,6 +13,7 @@
       <v-btn
         color="grey"
         flat
+        to="/classement"
       >Classement</v-btn>
       <v-spacer></v-spacer>
       <v-btn icon>
@@ -144,8 +145,6 @@ export default {
     }
   },
   created () {
-    console.log(process.env.PATRONUS_API)
-    console.log(this.account.status.loggedIn)
     this.getProfile()
   },
   computed: {
