@@ -160,15 +160,28 @@ export default {
 </script>
 
 <style lang="css" scoped>
-@import url('https://fonts.googleapis.com/css?family=Amatic+SC:700');
+@import url("https://fonts.googleapis.com/css?family=Amatic+SC:700");
+
+@media only screen and (max-width: 700px) {
+  .title_toolbar {
+    opacity: 0;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .title_toolbar {
+    font-size: 3em;
+    margin-top: -6px;
+  }
+}
 
 .title_toolbar {
   position: absolute;
   left: 50%;
   top: -21px;
--webkit-transform: translateX(-50%);
-transform: translateX(-50%);
-  font-family: 'Amatic SC', cursive;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  font-family: "Amatic SC", cursive;
   color: var(--v-primary-base);
   font-size: 3.5em;
 }
@@ -178,7 +191,7 @@ transform: translateX(-50%);
 }
 
 .title_toolbar a {
- text-decoration:none; 
+  text-decoration: none;
 }
 
 .countdown {
@@ -188,18 +201,15 @@ transform: translateX(-50%);
 .card_popover {
   /* margin-left: 100px; */
 }
-
 </style>
 
 <style>
-.vuejs-countdown .digit
-{
+.vuejs-countdown .digit {
   font-size: 14px !important;
   margin: 0 auto;
 }
 
-.vuejs-countdown li::after
-{
+.vuejs-countdown li::after {
   font-size: 14px !important;
   margin: 0 auto;
 }

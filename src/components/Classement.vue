@@ -1,11 +1,28 @@
 <template>
   <v-container class="container_classement">
-    <v-card-title>Classement</v-card-title>
-    <v-list two-line>
-      <template
-        v-for="item in even(items)"
-        class="template_classement"
-      >
+    <div class="text-xs-center">
+      <v-icon
+        class="icon_trophy"
+        x-large
+        color="yellow darken-1"
+      >fas fa-trophy </v-icon>
+      <v-btn
+        to="/classement"
+        round
+        large
+        color="secondary"
+      >Classement</v-btn>
+      <v-icon
+        class="icon_trophy"
+        x-large
+        color="yellow darken-1"
+      >fas fa-trophy </v-icon>
+    </div>
+    <v-list
+      two-line
+      class="template_classement"
+    >
+      <template v-for="item in even(items)">
         <v-list-tile
           :key="item.name"
           avatar
@@ -63,11 +80,26 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.container_classement{
-width: 50%;
+.container_classement {
+  width: 50%;
 }
 
-.template_classement{
-  padding: 100px;
+.template_classement {
+  margin-top: 10px;
+}
+
+.icon_trophy {
+}
+
+@media only screen and (max-width: 800px) {
+  .container_classement {
+    width: 75%;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .container_classement {
+    width: 90%;
+  }
 }
 </style>
